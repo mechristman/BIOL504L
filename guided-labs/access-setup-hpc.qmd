@@ -390,20 +390,23 @@ Below, the steps are numbered with emtpy code blocks below them. Copy-paste your
 
 1. Use `ssh` to log onto `bora`
    ```bash
-   CODE GOES HERE
+   ssh mechristman@bora.sciclone.wm.edu
    ```
 
 2. Move into your Biol404L directory
    ```bash
-   CODE GOES HERE
+   cd scr10/Biol404L
    ```
 
 3. Make two new directories, `raw_read_prep` and `transcript_quantification`, in your Biol404L directory
    ```bash
-   CODE GOES HERE
+cd scr10/Biol404L
+mkdir raw_read_prep
+mkdir transcript_quantification
    ```
 
 4. Activate your conda `sra_prep` container (make sure to load miniforge3 first)
    ```bash
-   CODE GOES HERE
+
+conda activate sra_prep
    ```
