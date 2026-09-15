@@ -1,6 +1,6 @@
 ---
 title: "Transcript Quantification"
-author: "YOUR-NAME"
+author: "McCall Christman"
 date: 2026-09-09
 projects: "guided-learning"
 keywords:
@@ -78,7 +78,8 @@ manipulation to prepare everything.
 
 5. Move into the `transcript_quantification` folder
    ```bash
-   YOUR CODE HERE
+ cd scr10/Biol404L/transcript_quantification/
+
    ```
 
 6. Use `pwd` to view the `PATH` to this folder. Make sure to copy this path!
@@ -86,7 +87,7 @@ manipulation to prepare everything.
 7. You will use your **local** terminal (not connected to the HPC) to upload data
 to the `transcript_quantification`.
    ```bash
-   scp [DRAG-FILE-TO-TERMINAL] wm-username@bora.sciclone.wm.edu:[PASTE-THE-PWD-PATH]
+   scp [DRAG-FILE-TO-TERMINAL] wm-username@bora.sciclone.wm.edu:/sciclone/home/mechristman/scr10/Biol404L/transcript_quantification
    ```
 
    `scp` works by moving files **from** a location **to** another location.
@@ -329,12 +330,13 @@ Below, the steps are numbered with emtpy code blocks below them. Copy-paste your
 
 1. Log onto the HPC
    ```bash
-   YOUR CODE HERE
+ssh mechristman@bora.sciclone.wm.edu
    ```
 
 2. Move into your `transcript_quantification` folder on the HPC
    ```bash
-   YOUR CODE HERE
+ cd scr10/Biol404L/transcript_quantification
+
    ```
 
 3. In a new terminal, copy files for today's lab to the `transcript_quantification`

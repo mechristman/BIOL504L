@@ -1,5 +1,5 @@
 ---
-title: "YOUR-NAME'S Lab Notebook"
+title: "McCall Christman's Lab Notebook"
 format: html
 ---
 # Using the lab notebook

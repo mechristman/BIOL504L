@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="YOUR-NAME">
+<meta name="author" content="McCall Christman">
 <meta name="dcterms.date" content="2026-09-09">
 <meta name="keywords" content="salmon, read-mapping, hpc">
 
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>YOUR-NAME </p>
+             <p>McCall Christman </p>
           </div>
   </div>
     
@@ -272,10 +272,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>In <strong>one</strong> of those terminals, log onto the HPC</p></li>
 <li><p>On the HPC and in your lab folder in <code>scr10</code>, you should (hopefully) have a <code>transcript_quantification</code> folder. If you do not, then make one <strong>in your lab folder</strong></p></li>
 <li><p>Move into the <code>transcript_quantification</code> folder</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">YOUR</span> CODE HERE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> <span class="bu">cd</span> scr10/Biol404L/transcript_quantification/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Use <code>pwd</code> to view the <code>PATH</code> to this folder. Make sure to copy this path!</p></li>
 <li><p>You will use your <strong>local</strong> terminal (not connected to the HPC) to upload data to the <code>transcript_quantification</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="pp">[</span><span class="ss">DRAG</span><span class="pp">-</span><span class="ss">FILE</span><span class="pp">-</span><span class="ss">TO</span><span class="pp">-</span><span class="ss">TERMINAL</span><span class="pp">]</span> wm-username@bora.sciclone.wm.edu:<span class="pp">[</span><span class="ss">PASTE</span><span class="pp">-</span><span class="ss">THE</span><span class="pp">-</span><span class="ss">PWD</span><span class="pp">-</span><span class="ss">PATH</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="pp">[</span><span class="ss">DRAG</span><span class="pp">-</span><span class="ss">FILE</span><span class="pp">-</span><span class="ss">TO</span><span class="pp">-</span><span class="ss">TERMINAL</span><span class="pp">]</span> wm-username@bora.sciclone.wm.edu:/sciclone/home/mechristman/scr10/Biol404L/transcript_quantification</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>scp</code> works by moving files <strong>from</strong> a location <strong>to</strong> another location.</p>
 <p>By putting the files from your computer first, <code>scp</code> will copy those files <strong>from</strong> your computer <strong>to</strong> the HPC. Later, we will do the reverse.</p></li>
 <li><p>Once your <strong>local</strong> terminal says the files have uploaded, you can close it.</p></li>
@@ -516,9 +516,9 @@ Caution
 <p>Below, the steps are numbered with emtpy code blocks below them. Copy-paste your commands there!</p>
 <ol type="1">
 <li><p>Log onto the HPC</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">YOUR</span> CODE HERE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> mechristman@bora.sciclone.wm.edu</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Move into your <code>transcript_quantification</code> folder on the HPC</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">YOUR</span> CODE HERE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a> <span class="bu">cd</span> scr10/Biol404L/transcript_quantification</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>In a new terminal, copy files for today’s lab to the <code>transcript_quantification</code> folder on the HPC</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">YOUR</span> CODE HERE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Prepare the <code>Salmon</code> index files! – ONLY NEEDS TO BE DONE ONE TIME!</p>

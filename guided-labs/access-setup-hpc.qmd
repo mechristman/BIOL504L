@@ -1,6 +1,6 @@
 ---
 title: "Accessing W&M's HPC"
-author: "Your Name"
+author: "McCall Christman"
 date: 2026-08-31
 projects: "guided-learning"
 keywords:
