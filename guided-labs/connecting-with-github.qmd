@@ -1,6 +1,6 @@
 ---
 title: "Working with GitHub"
-author: "Your Name"
+author: "McCall Christman"
 date: 2026-08-31
 projects: "guided-learning"
 keywords:
@@ -67,17 +67,19 @@ and setup your lab notebook webpage!
 
 1. Download your empty lab reposity from GitHub (only need to do this the first day)
    ```bash
-   CODE GOES HERE
    ```
 2. Download the files from BlackBoard and put them into the empty repository on your computer
 
+
 3. Using your terminal (or git-bash), move into this folder on your computer.
+
+Downloaded files, extract contents to BIOL504L/guided-labs/
 
 4. Render them quickly using R-Studio (or the terminal)
 
 5. Check if you have **local** updates that are not found in the **remote** repository
    ```bash
-   CODE GOES HERE
+   git status
    ```
 
 6. So many updates... Well GitHub has three big stages: adding changes, committing those changes
@@ -85,17 +87,17 @@ and setup your lab notebook webpage!
 
 7. Adding your changes to "stage" them to upload
    ```bash
-   CODE GOES HERE
+ git add .
    ```
 
 8. Committing those changes before pushing them!
    ```bash
-   CODE GOES HERE
+git commit -m "commit message"
    ```
 
 9. Pushing those changes
    ```bash
-   CODE GOES HERE
+   git push
    ```
 
    Please do **not** store your git-token here! This will be publicly available.
@@ -130,3 +132,12 @@ Remember the order is:
 # Quick Reference
 
 Make a small reference guide of steps for yourself down here!
+
+To update github website:
+
+- Go into terminal, navigate to PS C:\Users\mccal\Desktop\Biol504L\BIOL504L> 
+- git status to see if they're local and need to be saved
+- git add . to add files
+- git commit -m "commit message" to commit the changes
+- git push
+- Check remote repository to ensure that it updated.

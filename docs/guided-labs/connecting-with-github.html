@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your Name">
+<meta name="author" content="McCall Christman">
 <meta name="dcterms.date" content="2026-08-31">
 <meta name="keywords" content="github, website">
 
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Your Name </p>
+             <p>McCall Christman </p>
           </div>
   </div>
     
@@ -263,19 +263,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We are going to first “clone” the repository you made by hand. Afterwards, we will add some files to it, upload it back to GitHub with those new files (yay backups), and setup your lab notebook webpage!</p>
 <ol type="1">
 <li><p>Download your empty lab reposity from GitHub (only need to do this the first day)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">CODE</span> GOES HERE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Download the files from BlackBoard and put them into the empty repository on your computer</p></li>
 <li><p>Using your terminal (or git-bash), move into this folder on your computer.</p></li>
+</ol>
+<p>Downloaded files, extract contents to BIOL504L/guided-labs/</p>
+<ol start="4" type="1">
 <li><p>Render them quickly using R-Studio (or the terminal)</p></li>
 <li><p>Check if you have <strong>local</strong> updates that are not found in the <strong>remote</strong> repository</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">CODE</span> GOES HERE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>So many updates… Well GitHub has three big stages: adding changes, committing those changes (part of version control), then “pushing” those changes to the <strong>remote</strong> host (GitHub).</p></li>
 <li><p>Adding your changes to “stage” them to upload</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">CODE</span> GOES HERE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">git</span> add .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Committing those changes before pushing them!</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">CODE</span> GOES HERE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"commit message"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Pushing those changes</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">CODE</span> GOES HERE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Please do <strong>not</strong> store your git-token here! This will be publicly available. Keep it safe on your computer (possibly backup somewhere else)</p></li>
 <li><p>Check that the files are now in your repository</p></li>
 </ol>
@@ -303,6 +306,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="quick-reference" class="level1">
 <h1>Quick Reference</h1>
 <p>Make a small reference guide of steps for yourself down here!</p>
+<p>To update github website:</p>
+<ul>
+<li>Go into terminal, navigate to PS C:504L504L&gt;</li>
+<li>git status to see if they’re local and need to be saved</li>
+<li>git add . to add files</li>
+<li>git commit -m “commit message” to commit the changes</li>
+<li>git push</li>
+<li>Check remote repository to ensure that it updated.</li>
+</ul>
 
 
 </section>

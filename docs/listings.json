@@ -16,8 +16,10 @@
     "items": [
       "/guided-labs/access-setup-hpc.html",
       "/guided-labs/Sept_14_GLabs/Sept_14_GLabs/txpt-quantification.html",
+      "/guided-labs/Sept_14_GLabs/txpt-quantification.html",
       "/guided-labs/connecting-with-github.html",
       "/guided-labs/Sept_14_GLabs/Sept_14_GLabs/sra-fastqc-trim.html",
+      "/guided-labs/Sept_14_GLabs/sra-fastqc-trim.html",
       "/guided-labs/sra-fastqc-trim(1).html"
     ]
   },
