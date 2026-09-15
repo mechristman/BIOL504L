@@ -1,6 +1,6 @@
 ---
 title: "Week of August 31, 2026"
-author: "Your Name"
+author: McCall Christman
 date: 2026-08-31
 projects:
 ---
