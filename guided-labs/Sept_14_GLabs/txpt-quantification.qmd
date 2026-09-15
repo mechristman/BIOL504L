@@ -1,7 +1,7 @@
 ---
 title: "Transcript Quantification"
 author: "McCall Christman"
-date: 2026-09-09
+date: 2026-09-14
 projects: "guided-learning"
 keywords:
   - salmon
@@ -87,7 +87,9 @@ manipulation to prepare everything.
 7. You will use your **local** terminal (not connected to the HPC) to upload data
 to the `transcript_quantification`.
    ```bash
-   scp [DRAG-FILE-TO-TERMINAL] wm-username@bora.sciclone.wm.edu:/sciclone/home/mechristman/scr10/Biol404L/transcript_quantification
+scp C:\Users\mccal\Desktop\Biol504L\BIOL504L\guided-labs\Sept_14_GLabs\Guided_DGE_Data\Drosophila.Genome.fasta mechristman@bora.sciclone.wm.edu:/sciclone/home/mechristman/scr10/Biol404L/transcript_quantification
+ scp C:\Users\mccal\Desktop\Biol504L\BIOL504L\guided-labs\Sept_14_GLabs\Guided_DGE_Data\Drosophila.Transcriptome.fasta mechristman@bora.sciclone.wm.edu:/sciclone/home/mechristman/scr10/Biol404L/transcript_quantification
+  scp C:\Users\mccal\Desktop\Biol504L\BIOL504L\guided-labs\Sept_14_GLabs\Guided_DGE_Data\Drosophila.decoys.txt mechristman@bora.sciclone.wm.edu:/sciclone/home/mechristman/scr10/Biol404L/transcript_quantification
    ```
 
    `scp` works by moving files **from** a location **to** another location.
@@ -249,8 +251,8 @@ the trimmed reads in the script. Especially, as you should be working in your
    salmon quant \
         -i dmel_index \
         -l A \
-        -1 /sciclone/scr10/xxmaureralcala/Biol404L/raw_read_prep/Dmel_Maine_21C_Rep1.Fwd.20q.80nt.fastq.gz \
-        -2 /sciclone/scr10/xxmaureralcala/Biol404L/raw_read_prep/Dmel_Maine_21C_Rep1.Rev.20q.80nt.fastq.gz \
+        -1 /sciclone/scr10/mechristman/Biol404L/raw_read_prep/Dmel_Maine_21C_Rep1.Fwd.20q.80nt.fastq.gz \
+        -2 /sciclone/scr10/mechristman/Biol404L/raw_read_prep/Dmel_Maine_21C_Rep1.Rev.20q.80nt.fastq.gz \
         -p 8 \
         -o Salmon_Quant/Dmel_Maine_21C_Rep1_Quant
    ```
@@ -290,7 +292,7 @@ transcript-level quantification files from `Salmon`
 
    ::: {.callout-tip title="In case you get stumped" collapse="true"}
    ```bash
-   cd [PATH-TO-DRAG-QUANT-DATA-FOLDER]
+   cd Desktop\Guided_DGE_Analysis\quant_data>
    ```
    :::
 
@@ -306,7 +308,7 @@ to the `Salmon_Quant` folder on the HPC.
    In your **local** terminal, use `scp` to download the data.
 
    ```bash
-   scp -r wm-username@bora.sciclone.wm.edu:[PATH-TO-SALMON-QUANT-DATA-FOLDER]/Dmel* .
+scp -r mechristman@bora.sciclone.wm.edu:/sciclone/home/mechristman/scr10/Biol404L/transcript_quantification/Salmon_Quant/Dmel* .
    ```
 
    ::: {.callout-tip title="For Mac Users" collapse="true"}
@@ -342,45 +344,76 @@ ssh mechristman@bora.sciclone.wm.edu
 3. In a new terminal, copy files for today's lab to the `transcript_quantification`
 folder on the HPC
    ```bash
-   YOUR CODE HERE
+scp C:\Users\mccal\Desktop\Biol504L\BIOL504L\guided-labs\Sept_14_GLabs\Guided_DGE_Data\Drosophila.Genome.fasta mechristman@bora.sciclone.wm.edu:/sciclone/home/mechristman/scr10/Biol404L/transcript_quantification
+
+scp C:\Users\mccal\Desktop\Biol504L\BIOL504L\guided-labs\Sept_14_GLabs\Guided_DGE_Data\Drosophila.Transcriptome.fasta mechristman@bora.sciclone.wm.edu:/sciclone/home/mechristman/scr10/Biol404L/transcript_quantification
+
+scp C:\Users\mccal\Desktop\Biol504L\BIOL504L\guided-labs\Sept_14_GLabs\Guided_DGE_Data\Drosophila.decoys.txt mechristman@bora.sciclone.wm.edu:/sciclone/home/mechristman/scr10/Biol404L/transcript_quantification
    ```
 
 4. Prepare the `Salmon` index files! -- ONLY NEEDS TO BE DONE ONE TIME!
    a. Merge the transcriptome and genome files into one file
       ```bash
-      YOUR CODE HERE
+      cat Drosophila.Transcriptome.fasta Drosophila.Genome.fasta > Drosophila.Txm_Gnm.fasta
       ```
 
    b. Edit your `salmon_run.sh` file to run just the index-creation step
       ```bash
-      YOUR CODE HERE
+      #!/bin/bash
+#SBATCH --job-name=salmon
+#SBATCH --nodes=1
+#SBATCH --ntasks=8
+#SBATCH -t 1:00:00
+#SBATCH --mem=8G
+salmon index \
+   -p 8 \
+   -d decoys.txt \
+   -i dmel_index \
+   -t Drosophila.Txm_Gnm.fasta
       ```
 
    c. Submit the `salmon_run.sh` script
       ```bash
-      YOUR CODE HERE
+ sbatch salmon_run.sh
       ```
 5. Use `Salmon` to quantify transcript-level abundances
    a. Edit your `salmon_run.sh` file to run just the quantification steps with the
    appropriate pair of reads
       ```bash
-      YOUR CODE HERE
+#!/bin/bash
+#SBATCH --job-name=salmon
+#SBATCH --nodes=1
+#SBATCH --ntasks=8
+#SBATCH -t 1:00:00
+#SBATCH --mem=8G
+    #salmon index \
+ #    -p 8 \
+  #   -d decoys.txt \
+   #  -i dmel_index \
+    # -t Drosophila.Txm_Gnm.fasta
+salmon quant \
+     -i dmel_index \
+     -l A \
+     -1 /sciclone/scr10/mechristman/Biol404L/raw_read_prep/Dmel_Maine_21C_>
+     -2 /sciclone/scr10/mechristman/Biol404L/raw_read_prep/Dmel_Maine_21C_>
+     -p 8 \
+     -o Salmon_Quant/Dmel_Maine_21C_Rep12_Quant
       ```
 
    b. Submit the `salmon_run.sh` script
       ```bash
-      YOUR CODE HERE
+     sbatch salmon_run.sh
       ```
    c. Repeat!
 
 6. In your local terminal, move into the `quant_data` folder inside the
 `Guided_DGE_Analysis` folder that you already created
    ```bash
-   YOUR CODE HERE
+   PS C:\Users\mccal\Desktop> cd .\Guided_DGE_Analysis\quant_data
    ```
 
 7. Download all the outputs from the `Salmon_Quant` folder on the HPC to the
 `quant_data` on your computer
    ```bash
-   YOUR CODE HERE
+scp -r mechristman@bora.sciclone.wm.edu:/sciclone/home/mechristman/scr10/Biol404L/transcript_quantification/Salmon_Quant/Dmel* .
    ```
