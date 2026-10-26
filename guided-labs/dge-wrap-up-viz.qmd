@@ -595,6 +595,7 @@ heat_colors <- rev(brewer.pal(6, "RdYlBu"))
 +     qvalueCutoff = 0.05,
 +     readable = TRUE)
 
+
 > goa_summary <- data.frame(ego)
 > up_goa_summary <- data.frame(sig_up_ego)
 > down_goa_summary <- data.frame(sig_down_ego)
