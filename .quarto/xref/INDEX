@@ -49,5 +49,8 @@
   },
   "guided-labs/diff-gene-expression.qmd": {
     "diff-gene-expression.html": "cf06b32c"
+  },
+  "guided-labs/dge-wrap-up-viz.qmd": {
+    "dge-wrap-up-viz.html": "14b018c4"
   }
 }
