@@ -1,6 +1,6 @@
 ---
 title: "DGE Vizualizations and Follow-up"
-author: "YOUR-NAME"
+author: "McCall Christman"
 date: 2026-10-19
 projects: "guided-learning"
 keywords:
@@ -479,3 +479,107 @@ Also, what a great way to practice this week :)
 Below, the steps are numbered with emtpy code blocks below them. Copy-paste your commands there!
 
 With the packages installed, you will not need to run the installation a second time!
+
+My Code for this lab:
+  ```bash
+   load("C:/Users/mccal/Desktop/Biol504L/BIOL504L/.RData")
+> head(tx2gene)
+> good_rows <- rowSums(counts(dds)) >= 10
+> dds <- dds[good_rows,]
+> dds$group <- relevel(dds$group, ref = "Maine_21C")
+> dds <- DESeq(dds)
+> summary(result_maine_21C_29C_ashr)
+> samples$sample_name <- paste(samples$Geographic.Location, samples$Temperature, samples$Replicate, sep = "_")
+> colnames(dds) <- samples$sample_name
+> normalized_counts <- counts(dds, normalized=T) %>%
++     data.frame() %>%
++     rownames_to_column(var="gene") %>%
++     as_tibble()
+> head(normalized_counts)
+heat_colors <- rev(brewer.pal(6, "RdYlBu"))
+> pheatmap(normalized_counts[2:13],
++          color = heat_colors,
++          cluster_rows = T,
++          cluster_cols = T,
++          show_rownames = F,
++          border_color = NA,
++          fontsize = 10,
++          scale = "row",
++          treeheight_row = 0,
++          height = 20)
+res_df <- as.data.frame(result_maine_21C_29C_ashr) %>%
++     tibble::rownames_to_column("gene")
+> res_df <- res_df %>% filter(!is.na(padj))
+> res_df <- res_df %>%
++     mutate(diffexpressed = case_when(
++         log2FoldChange > 1 & padj < 0.05 ~ "UP",
++         log2FoldChange < -1 & padj < 0.05 ~ "DOWN",
++         TRUE ~ "NOT"
++     ))
+> head(res_df)
+ ggplot(res_df, aes(x = log2FoldChange, y = -log10(padj), color = diffexpressed)) + # plots the points and colors them based on their "type" of expression
++     geom_point(alpha = 0.6, size = 1.5) + xlim(-2, 2) + # defines the size and opacity (alpha) of the points. alpha is NOT the p-value
++     scale_color_manual(values = c("DOWN" = "blue", "NOT" = "grey", "UP" = "red")) + # manually setting the colors for our DEGs
++     geom_vline(xintercept = c(-1, 1), linetype = "dashed") + # makes the x-axis log2-fold change lines at x = -1 and x = 1
++     geom_hline(yintercept = -log10(0.05), linetype = "dashed") + # makes the y-axis adjusted p-value line
++     theme_minimal() + # keeps the plot less crowded
++     labs(x = "log2 Fold Change",
++          y = "-log10 Adjusted p-value",
++          color = "Expression") # labeles the axes and legend
+ write.csv(result_maine_21C_29C_ashr, file.path(dir, "Maine_21C_29C.DGE.csv"), row.names = FALSE)
+> 
+> write.csv(normalized_counts, file.path(dir, "Dmel_NormCounts.DGE.csv"), row.names = FALSE)
+> 
+> save(dds, file = file.path(dir, "Dmel.DDS.rda"))
+> ah <- AnnotationHub()
+> query(ah, c("Drosophila melanogaster", "OrgDb"))
+> org_db <- ah[["AH121952"]]
+> sig_degs <- res_df %>% filter(diffexpressed != "NOT")
+> only_up_degs <- res_df %>% filter(diffexpressed == "UP")
+> only_down_degs <- res_df %>% filter(diffexpressed == "DOWN")
+> all_gene_names <- c(res_df$gene)
+> sig_deg_names <- c(sig_degs$gene)
+> sig_up_names <- c(only_up_degs$gene)
+> sig_down_names <- c(only_down_degs$gene)
+> clean_sig_deg_names <- unlist(lapply(sig_deg_names, function(x) gsub("Dmel_", "", x)))
+> clean_uni_names <- unlist(lapply(all_gene_names, function(x) gsub("Dmel_", "", x)))
+> clean_sig_up_names <- unlist(lapply(sig_up_names, function(x) gsub("Dmel_", "", x)))
+> clean_sig_down_names <- unlist(lapply(sig_down_names, function(x) gsub("Dmel_", "", x)))
+ego <- enrichGO(
++     gene = clean_sig_deg_names,
++     universe = clean_uni_names,
++     OrgDb = org_db,
++     keyType = "FLYBASECG", # adjust keyType based on your input IDs
++     ont = "BP", # BP: Biological Process, MF: Molecular Function, CC: Cellular Component, ALL: get all of them!
++     pAdjustMethod = "BH",
++     qvalueCutoff = 0.05,
++     readable = TRUE)
+> sig_up_ego <- enrichGO(
++     gene = clean_sig_up_names,
++     universe = clean_uni_names,
++     OrgDb = org_db,
++     keyType = "FLYBASECG", # adjust keyType based on your input IDs
++     ont = "BP", # BP: Biological Process, MF: Molecular Function, CC: Cellular Component, ALL: get all of them!
++     pAdjustMethod = "BH",
++     qvalueCutoff = 0.05,
++     readable = TRUE)
+> sig_down_ego <- enrichGO(
++     gene = clean_sig_down_names,
++     universe = clean_uni_names,
++     OrgDb = org_db,
++     keyType = "FLYBASECG", # adjust keyType based on your input IDs
++     ont = "BP", # BP: Biological Process, MF: Molecular Function, CC: Cellular Component, ALL: get all of them!
++     pAdjustMethod = "BH",
++     qvalueCutoff = 0.05,
++     readable = TRUE)
+goa_summary <- data.frame(ego)
+> up_goa_summary <- data.frame(sig_up_ego)
+> down_goa_summary <- data.frame(sig_down_ego)
+> 
+> write.csv(goa_summary, file.path(dir, "Maine_21C_29C.All_DEGs.GOEnrichment.csv"))
+> write.csv(up_goa_summary, file.path(dir, "Maine_21C_29C.UpReg_DEGs.GOEnrichment.csv"))
+> write.csv(up_goa_summary, file.path(dir, "Maine_21C_29C.DownReg_DEGs.GOEnrichment.csv"))
+> ego_sim <- enrichplot::pairwise_termsim(ego)
+> emapplot(ego_sim, showCategory = 50)
+   ```
+   
